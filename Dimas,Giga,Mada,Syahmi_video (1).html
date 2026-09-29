@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Air Terjun Nglirip — Temukan Sisi Alami Tuban.">
+  <title>Air Terjun Nglirip — Temukan Sisi Alami Tuban</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Allura&family=Cormorant+Garamond:wght@500;600;700&family=Libre+Baskerville:wght@400;700&family=Montserrat:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --white:#FFFFFF;
+      --green:#2E7D32;
+      --green-dark:#173D24;
+      --blue-green:#00796B;
+      --stone:#665B4D;
+      --cream:#F5F3EC;
+      --ink:#17251D;
+      --muted:#68736C;
+      --line:rgba(23,37,29,.12);
+      --shadow:0 18px 50px rgba(23,37,29,.12);
+      --radius:24px;
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      background:var(--white);
+      color:var(--ink);
+      font-family:"Libre Baskerville",serif;
+      line-height:1.75;
+      overflow-x:hidden;
+    }
+    img{display:block;width:100%;height:100%;object-fit:cover}
+    a{text-decoration:none;color:inherit}
+    button{font:inherit}
+
+    .container{width:min(1180px,92%);margin:auto}
+    .eyebrow{
+      color:var(--green);
+      font:700 12px/1 "Montserrat",sans-serif;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      margin-bottom:16px;
+    }
+    h1,h2,h3,.nav,.btn,.stat strong,.number{
+      font-family:"Montserrat",sans-serif;
+    }
+    h2{
+      font-size:clamp(32px,5vw,62px);
+      line-height:1.02;
+      letter-spacing:-.045em;
+    }
+    .script{
+      font-family:"Allura",cursive;
+      font-size:clamp(32px,4vw,56px);
+      font-weight:400;
+    }
+    .serif{
+      font-family:"Cormorant Garamond",serif;
+    }
+
+    /* NAVBAR */
+    .navbar{
+      position:fixed;
+      z-index:1000;
+      top:0;left:0;right:0;
+      padding:18px 0;
+      transition:.35s ease;
+      color:white;
+    }
+    .navbar.scrolled{
+      background:rgba(255,255,255,.94);
+      color:var(--ink);
+      box-shadow:0 8px 30px rgba(0,0,0,.08);
+      backdrop-filter:blur(14px);
+    }
+    .nav-inner{display:flex;align-items:center;justify-content:space-between;gap:30px}
+    .brand{
+      display:flex;align-items:center;gap:12px;
+      font:800 13px/1.15 "Montserrat",sans-serif;
+      letter-spacing:.05em;
+      text-transform:uppercase;
+    }
+    .brand-mark{
+      width:38px;height:38px;border-radius:50%;
+      display:grid;place-items:center;
+      background:rgba(255,255,255,.18);
+      border:1px solid rgba(255,255,255,.45);
+      font-size:18px;
+    }
+    .scrolled .brand-mark{background:var(--green);border-color:var(--green);color:white}
+    .nav-links{display:flex;gap:26px;align-items:center}
+    .nav-links a{
+      font:600 11px "Montserrat",sans-serif;
+      text-transform:uppercase;
+      letter-spacing:.09em;
+      opacity:.9;
+    }
+    .nav-links a:hover{opacity:1;color:#B9E4C2}
+    .menu-btn{display:none;background:none;border:0;color:inherit;font-size:25px}
+
+    /* HERO */
+    .hero{
+      min-height:100vh;
+      position:relative;
+      display:flex;
+      align-items:flex-end;
+      overflow:hidden;
+      color:white;
+      background:#1a3022;
+    }
+    .hero-bg{
+      position:absolute;inset:0;
+      background:
+        linear-gradient(180deg,rgba(5,20,12,.25),rgba(5,20,12,.78)),
+        url("https://indonesiakaya.com/wp-content/uploads/2020/10/1__Secara_administratif_Air_Terjun_Nglirip_Tuban_terletak_di_Dusun_Jojogan_Desa_Mulyo_Agung_Kecamatan_Singgahan.jpg") center/cover;
+      transform:scale(1.03);
+      animation:heroZoom 12s ease-out forwards;
+    }
+    @keyframes heroZoom{to{transform:scale(1)}}
+    .hero-content{position:relative;z-index:2;padding:150px 0 80px;max-width:900px}
+    .hero-kicker{
+      font:600 13px "Montserrat",sans-serif;
+      letter-spacing:.22em;
+      text-transform:uppercase;
+      margin-bottom:22px;
+    }
+    .hero h1{
+      font-size:clamp(50px,9vw,118px);
+      line-height:.87;
+      letter-spacing:-.065em;
+      max-width:900px;
+    }
+    .hero h1 span{display:block;color:#D8F1DE}
+    .hero-sub{
+      margin:28px 0 30px;
+      max-width:650px;
+      font-size:16px;
+      color:rgba(255,255,255,.86);
+    }
+    .hero-actions{display:flex;gap:12px;flex-wrap:wrap}
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;
+      min-height:50px;padding:0 22px;
+      border-radius:999px;
+      font-size:11px;font-weight:800;
+      letter-spacing:.08em;text-transform:uppercase;
+      transition:.25s ease;
+      border:1px solid transparent;
+    }
+    .btn-primary{background:white;color:var(--green-dark)}
+    .btn-primary:hover{transform:translateY(-3px);box-shadow:0 12px 30px rgba(0,0,0,.2)}
+    .btn-stone{background:var(--stone);color:white}
+    .btn-stone:hover{transform:translateY(-3px);filter:brightness(1.08)}
+    .hero-note{
+      position:absolute;right:4%;bottom:40px;
+      z-index:2;
+      writing-mode:vertical-rl;
+      font:600 10px "Montserrat",sans-serif;
+      letter-spacing:.18em;text-transform:uppercase;
+      opacity:.75;
+    }
+
+    /* INTRO */
+    section{padding:110px 0}
+    .intro-grid{
+      display:grid;
+      grid-template-columns:1.1fr .9fr;
+      gap:70px;align-items:center;
+    }
+    .intro-title{max-width:650px}
+    .intro-title p{margin-top:25px;color:var(--muted);font-size:15px}
+    .intro-image{
+      height:520px;
+      border-radius:var(--radius);
+      overflow:hidden;
+      box-shadow:var(--shadow);
+      position:relative;
+    }
+    .intro-image::after{
+      content:"Air • Batu • Hijau";
+      position:absolute;bottom:20px;left:20px;
+      background:rgba(255,255,255,.9);
+      color:var(--green-dark);
+      padding:10px 14px;
+      border-radius:999px;
+      font:800 10px "Montserrat",sans-serif;
+      letter-spacing:.1em;
+      text-transform:uppercase;
+    }
+    .stats{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:10px;margin-top:35px;
+    }
+    .stat{
+      padding:20px 16px;
+      background:var(--cream);
+      border-radius:18px;
+    }
+    .stat strong{display:block;font-size:17px}
+    .stat span{font-size:11px;color:var(--muted)}
+
+    /* ATTRACTIONS */
+    .green-section{background:var(--green-dark);color:white}
+    .section-head{
+      display:flex;justify-content:space-between;gap:30px;
+      align-items:flex-end;margin-bottom:45px;
+    }
+    .section-head p{max-width:420px;color:rgba(255,255,255,.7);font-size:13px}
+    .attraction-grid{
+      display:grid;
+      grid-template-columns:1.2fr .8fr .8fr;
+      gap:18px;
+    }
+    .attraction{
+      position:relative;
+      min-height:490px;
+      border-radius:22px;
+      overflow:hidden;
+      background:#25442e;
+    }
+    .attraction:first-child{min-height:590px}
+    .attraction::after{
+      content:"";position:absolute;inset:0;
+      background:linear-gradient(180deg,transparent 25%,rgba(0,0,0,.75));
+    }
+    .attraction img{transition:transform .7s ease}
+    .attraction:hover img{transform:scale(1.07)}
+    .attraction-copy{
+      position:absolute;z-index:2;left:25px;right:25px;bottom:25px;
+    }
+    .number{font-size:11px;letter-spacing:.15em;color:#B9E4C2}
+    .attraction h3{font-size:25px;line-height:1.1;margin:8px 0 10px}
+    .attraction p{font-size:12px;color:rgba(255,255,255,.8)}
+
+    /* EXPERIENCE */
+    .experience-grid{
+      display:grid;
+      grid-template-columns:.85fr 1.15fr;
+      gap:70px;align-items:start;
+    }
+    .activity-list{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .activity{
+      padding:26px;
+      min-height:150px;
+      border:1px solid var(--line);
+      border-radius:20px;
+      transition:.25s ease;
+    }
+    .activity:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
+    .activity .icon{font-size:25px;margin-bottom:15px}
+    .activity h3{font-size:14px;margin-bottom:8px}
+    .activity p{font-size:11px;color:var(--muted)}
+
+    /* LOCAL STORY */
+    .story{
+      background:var(--cream);
+    }
+    .story-grid{
+      display:grid;grid-template-columns:.75fr 1.25fr;gap:70px;align-items:center
+    }
+    .story-photo{height:500px;border-radius:24px;overflow:hidden}
+    .story-copy p{margin-top:20px;color:var(--muted);font-size:14px}
+    .quote{
+      margin-top:28px;
+      padding:20px 0 0 25px;
+      border-left:3px solid var(--green);
+      font:600 28px/1.15 "Cormorant Garamond",serif;
+    }
+
+    /* UMKM */
+    .umkm-grid{
+      display:grid;grid-template-columns:1fr 1fr;gap:20px;
+    }
+    .food-card{
+      display:grid;grid-template-columns:42% 58%;
+      min-height:300px;
+      background:var(--blue-green);
+      color:white;border-radius:24px;overflow:hidden;
+    }
+    .food-card img{height:100%}
+    .food-copy{padding:32px;display:flex;flex-direction:column;justify-content:center}
+    .food-copy h3{font-size:26px;margin-bottom:12px}
+    .food-copy p{font-size:12px;color:rgba(255,255,255,.78)}
+    .price{margin-top:20px;font:800 13px "Montserrat",sans-serif}
+
+    /* TRAVEL INFO */
+    .info-section{background:#F8FAF7}
+    .info-grid{
+      display:grid;grid-template-columns:1fr 1fr;gap:25px
+    }
+    .info-card{
+      background:white;border:1px solid var(--line);border-radius:24px;padding:30px;
+    }
+    .info-card h3{font-size:16px;margin-bottom:20px}
+    .info-list{list-style:none;display:grid;gap:14px}
+    .info-list li{
+      display:flex;justify-content:space-between;gap:20px;
+      padding-bottom:12px;border-bottom:1px solid var(--line);
+      font-size:12px;
+    }
+    .info-list li span:first-child{color:var(--muted)}
+    .map{
+      min-height:100%;
+      border-radius:24px;overflow:hidden;
+      background:#dbe8df;
+    }
+    .map iframe{width:100%;height:100%;min-height:390px;border:0}
+    .warning{
+      margin-top:18px;padding:16px;border-radius:16px;
+      background:#fff4dc;color:#6c552b;font-size:11px;
+    }
+
+    /* GALLERY */
+    .gallery{
+      display:grid;
+      grid-template-columns:1.25fr .75fr .75fr;
+      grid-template-rows:270px 270px;
+      gap:12px;
+    }
+    .gallery-item{border-radius:18px;overflow:hidden;position:relative}
+    .gallery-video{background:#000}
+    .gallery-video iframe{
+      width:100%;
+      height:100%;
+      min-height:100%;
+      border:0;
+      display:block;
+    }
+    .gallery-item:first-child{grid-row:span 2}
+    .gallery-item img{transition:.6s}
+    .gallery-item:hover img{transform:scale(1.06)}
+    .gallery-item::after{
+      content:"";position:absolute;inset:0;
+      background:linear-gradient(180deg,transparent 55%,rgba(0,0,0,.35));
+      pointer-events:none;
+    }
+
+    /* FOOTER */
+    footer{
+      background:var(--green-dark);color:white;
+      padding:65px 0 30px;
+    }
+    .footer-grid{
+      display:grid;grid-template-columns:1.2fr .8fr .8fr;gap:40px;
+      padding-bottom:45px;
+      border-bottom:1px solid rgba(255,255,255,.12);
+    }
+    footer h3{font-size:15px;margin-bottom:15px}
+    footer p,footer a{font-size:11px;color:rgba(255,255,255,.65)}
+    .footer-brand{
+      font:800 25px "Montserrat",sans-serif;
+      letter-spacing:-.04em;margin-bottom:12px
+    }
+    .copyright{
+      padding-top:25px;text-align:center;
+      font-size:10px;color:rgba(255,255,255,.45)
+    }
+
+    /* REVEAL */
+    .reveal{opacity:0;transform:translateY(28px);transition:opacity .8s ease,transform .8s ease}
+    .reveal.show{opacity:1;transform:none}
+
+    @media(max-width:850px){
+      .nav-links{display:none}
+      .menu-btn{display:block}
+      .intro-grid,.experience-grid,.story-grid,.info-grid{grid-template-columns:1fr}
+      .attraction-grid{grid-template-columns:1fr 1fr}
+      .attraction:first-child{grid-column:span 2;min-height:470px}
+      .food-card{grid-template-columns:1fr}
+      .food-card img{height:230px}
+      .footer-grid{grid-template-columns:1fr 1fr}
+    }
+    @media(max-width:600px){
+      section{padding:75px 0}
+      .hero-content{padding-bottom:60px}
+      .hero-note{display:none}
+      .stats{grid-template-columns:1fr}
+      .attraction-grid,.activity-list,.umkm-grid,.footer-grid{grid-template-columns:1fr}
+      .attraction:first-child{grid-column:auto}
+      .attraction{min-height:430px}
+      .gallery{
+        grid-template-columns:1fr 1fr;
+        grid-template-rows:210px 210px 210px;
+      }
+      .gallery-item:first-child{grid-row:span 2}
+      .gallery-item:nth-child(4){grid-column:span 2}
+      .section-head{display:block}
+      .section-head p{margin-top:18px}
+    }
+  </style>
+</head>
+
+<body>
+  <header class="navbar" id="navbar">
+    <div class="container nav-inner">
+      <a class="brand" href="#home">
+        <span class="brand-mark">✦</span>
+        <span>Jejak lestari<br>Air terjun Nglirip</span>
+      </a>
+      <nav class="nav-links">
+        <a href="#destinasi">Destinasi</a>
+        <a href="#daya-tarik">Daya Tarik</a>
+        <a href="#aktivitas">Aktivitas</a>
+        <a href="#umkm">Kuliner</a>
+        <a href="#informasi">Informasi</a>
+        <a href="#gallery">Gallery</a>
+      </nav>
+      <button class="menu-btn" aria-label="Buka menu">☰</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-bg"></div>
+      <div class="container hero-content reveal">
+        <div class="hero-kicker">Wisata Alam • Tuban • Jawa Timur</div>
+        <h1>Temukan Sisi <span>Alami Tuban.</span></h1>
+        <p class="hero-sub">
+          Air Terjun Nglirip menghadirkan perpaduan air terjun, tebing batu,
+          pepohonan hijau, dan suasana pedesaan yang tenang.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#destinasi">Jelajahi Destinasi</a>
+          <a class="btn btn-stone" href="https://maps.app.goo.gl/2sDjzFsqGos19DZq7" target="_blank" rel="noopener">Lihat Lokasi ↗</a>
+        </div>
+      </div>
+      <div class="hero-note">Air • Batu • Hijau • Petualangan</div>
+    </section>
+
+    <section id="destinasi">
+      <div class="container intro-grid reveal">
+        <div class="intro-title">
+          <div class="eyebrow">Tentang Destinasi</div>
+          <h2>Alam yang mengajakmu <span class="serif">berhenti sejenak.</span></h2>
+          <p>
+            Air Terjun Nglirip berada di Dusun Jojogan, Desa Mulyoagung,
+            Kecamatan Singgahan, Kabupaten Tuban, Jawa Timur. Destinasi ini
+            menawarkan perpaduan aliran air, tebing batu, pepohonan hijau,
+            dan suasana pedesaan yang alami.
+          </p>
+          <div class="stats">
+            <div class="stat"><strong>Wisata Alam</strong><span>Kategori destinasi</span></div>
+            <div class="stat"><strong>Sejuk</strong><span>Suasana alami</span></div>
+            <div class="stat"><strong>Fotogenik</strong><span>Panorama air & batu</span></div>
+          </div>
+        </div>
+        <div class="intro-image">
+          <img src="https://assets.promediateknologi.id/crop/0x0%3A0x0/1200x800/webp/photo/p1/301/2023/09/23/air-terjun-nglirip-1483267181.jpg" alt="Pepohonan hijau di kawasan alam">
+        </div>
+      </div>
+    </section>
+
+    <section class="green-section" id="daya-tarik">
+      <div class="container reveal">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow" style="color:#B9E4C2">Daya Tarik Utama</div>
+            <h2>Three reasons<br><span class="serif">to slow down.</span></h2>
+          </div>
+          <p>
+            Tiga pengalaman utama yang menjadi fokus visual destinasi:
+            air terjun, suasana alam yang asri, dan spot foto.
+          </p>
+        </div>
+
+        <div class="attraction-grid">
+          <article class="attraction">
+            <img src="https://indonesiakaya.com/wp-content/uploads/2020/10/1__Secara_administratif_Air_Terjun_Nglirip_Tuban_terletak_di_Dusun_Jojogan_Desa_Mulyo_Agung_Kecamatan_Singgahan.jpg" alt="Air terjun alami">
+            <div class="attraction-copy">
+              <div class="number">01 / WATERFALL</div>
+              <h3>Air Terjun yang Indah</h3>
+              <p>Air mengalir deras dari tebing batu, menciptakan pemandangan alami yang indah dan menyegarkan.</p>
+            </div>
+          </article>
+
+          <article class="attraction">
+            <img src="https://assets.promediateknologi.id/crop/0x0%3A0x0/1200x800/webp/photo/p1/301/2023/09/23/air-terjun-nglirip-1483267181.jpg" alt="Hutan hijau">
+            <div class="attraction-copy">
+              <div class="number">02 / NATURE</div>
+              <h3>Alam yang Asri</h3>
+              <p>Pepohonan hijau, tebing batu, dan udara sejuk menciptakan ruang nyaman untuk bersantai.</p>
+            </div>
+          </article>
+
+          <article class="attraction">
+            <img src="https://indonesiakaya.com/wp-content/uploads/2020/10/1__Secara_administratif_Air_Terjun_Nglirip_Tuban_terletak_di_Dusun_Jojogan_Desa_Mulyo_Agung_Kecamatan_Singgahan.jpg" alt="Pengunjung menikmati panorama alam">
+            <div class="attraction-copy">
+              <div class="number">03 / MOMENT</div>
+              <h3>Spot Foto Menarik</h3>
+              <p>Keindahan air terjun dan lingkungan sekitar menjadi latar menarik untuk mengabadikan momen.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="aktivitas">
+      <div class="container experience-grid reveal">
+        <div>
+          <div class="eyebrow">Experience</div>
+          <h2>Datang untuk alam, pulang membawa <span class="serif">cerita.</span></h2>
+          <p style="margin-top:20px;color:var(--muted);font-size:13px">
+            Nikmati pengalaman sederhana yang membuat perjalanan terasa lebih berkesan.
+          </p>
+        </div>
+        <div class="activity-list">
+          <article class="activity"><div class="icon">💧</div><h3>Menikmati Air Terjun</h3><p>Melihat aliran air sambil menikmati udara yang sejuk dan menyegarkan.</p></article>
+          <article class="activity"><div class="icon">📸</div><h3>Berburu Foto</h3><p>Abadikan air terjun, tebing batu, dan pepohonan hijau dari berbagai sudut.</p></article>
+          <article class="activity"><div class="icon">🌿</div><h3>Bersantai di Alam</h3><p>Menikmati suara air, udara segar, dan pemandangan hijau.</p></article>
+          <article class="activity"><div class="icon">🥥</div><h3>Menikmati Kuliner</h3><p>Mencicipi makanan dan minuman yang dijual masyarakat sekitar.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="story">
+      <div class="container story-grid reveal">
+        <div class="story-photo">
+          <img src="https://assets.promediateknologi.id/crop/0x0%3A0x0/1200x800/webp/photo/p1/301/2023/09/23/air-terjun-nglirip-1483267181.jpg" alt="Pemandangan alam dan tebing">
+        </div>
+        <div class="story-copy">
+          <div class="eyebrow">Local Story</div>
+          <h2>Jejak alam, <span class="serif">jejak cerita.</span></h2>
+          <p>
+            Air Terjun Nglirip dikenal masyarakat sekitar sejak dahulu. Selain
+            keindahan tebing batu, pepohonan hijau, dan aliran air alami,
+            Nglirip juga memiliki legenda Putri Nglirip yang diceritakan
+            secara turun-temurun.
+          </p>
+          <p>
+            Kisah tersebut menjadi bagian dari budaya dan cerita rakyat yang
+            membuat kawasan ini memiliki dimensi lebih dari sekadar panorama alam.
+          </p>
+          <div class="quote">“Warisan alam yang terus diceritakan dari generasi ke generasi.”</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="umkm">
+      <div class="container reveal">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">Kuliner / UMKM</div>
+            <h2>Rasa lokal di<br><span class="serif">perjalananmu.</span></h2>
+          </div>
+          <p>
+            Dukung masyarakat sekitar dengan menikmati makanan dan minuman
+            yang tersedia di kawasan wisata.
+          </p>
+        </div>
+
+        <div class="umkm-grid">
+          <article class="food-card">
+            <img src="k0xcuas3j63xjw7.jpeg" alt="Makanan lokal">
+            <div class="food-copy">
+              <h3>Rujak</h3>
+              <p>Jajanan lokal yang dapat dinikmati setelah beraktivitas di kawasan wisata.</p>
+              <div class="price">Rp5.000 – Rp20.000</div>
+            </div>
+          </article>
+          <article class="food-card">
+            <img src="kfwaj1jwb2xs5mj.jpeg" alt="Kelapa muda">
+            <div class="food-copy">
+              <h3>Kelapa Muda</h3>
+              <p>Minuman segar untuk menemani waktu beristirahat bersama teman atau keluarga.</p>
+              <div class="price">Sekitar kawasan Nglirip</div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="info-section" id="informasi">
+      <div class="container reveal">
+        <div class="section-head" style="color:var(--ink)">
+          <div>
+            <div class="eyebrow">Travel Information</div>
+            <h2>Rencanakan <span class="serif">kunjunganmu.</span></h2>
+          </div>
+          <p style="color:var(--muted)">
+            Informasi dasar berdasarkan blueprint destinasi yang telah disusun.
+          </p>
+        </div>
+
+        <div class="info-grid">
+          <div class="info-card">
+            <h3>Informasi Wisata</h3>
+            <ul class="info-list">
+              <li><span>Lokasi</span><strong>Dusun Jojogan, Mulyoagung, Singgahan, Tuban</strong></li>
+              <li><span>Jam</span><strong>07.00 – 16.30</strong></li>
+              <li><span>Tiket</span><strong>Rp10.000</strong></li>
+              <li><span>Akses</span><strong>Mudah dijangkau</strong></li>
+              <li><span>Fasilitas</span><strong>Parkir, kamar mandi, warung</strong></li>
+            </ul>
+            <div class="warning">
+              Catatan:  pada seluruh pengunjung agar berhati-hati saat melewati jembatan karena
+              beberapa bagian dilaporkan berlubang.
+            </div>
+            <a class="btn btn-stone" style="margin-top:20px" href="https://maps.app.goo.gl/2sDjzFsqGos19DZq7" target="_blank" rel="noopener">Buka Google Maps ↗</a>
+          </div>
+
+          <div class="map">
+            <iframe
+              src="https://www.google.com/maps?q=Air%20Terjun%20Nglirip%2C%20Tuban&output=embed"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              title="Peta lokasi Air Terjun Nglirip">
+            </iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="gallery">
+      <div class="container reveal">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">Gallery</div>
+            <h2>Frame the <span class="serif">moment.</span></h2>
+          </div>
+          <p>Gunakan foto asli Air Terjun Nglirip pada bagian ini untuk memperkuat identitas destinasi.</p>
+        </div>
+
+        <div class="gallery">
+          <div class="gallery-item gallery-video">
+            <iframe
+              src="https://www.tiktok.com/player/v1/7685319936004197650"
+              title="Video TikTok Air Terjun Nglirip"
+              allow="fullscreen"
+              loading="lazy">
+            </iframe>
+          </div>
+          <div class="gallery-item"><img src="https://assets.promediateknologi.id/crop/0x0%3A0x0/1200x800/webp/photo/p1/301/2023/09/23/air-terjun-nglirip-1483267181.jpg" alt="Hutan hijau"></div>
+          <div class="gallery-item"><img src="https://indonesiakaya.com/wp-content/uploads/2020/10/1__Secara_administratif_Air_Terjun_Nglirip_Tuban_terletak_di_Dusun_Jojogan_Desa_Mulyo_Agung_Kecamatan_Singgahan.jpg" alt="Pepohonan"></div>
+          <div class="gallery-item"><img src="https://assets.promediateknologi.id/crop/0x0%3A0x0/1200x800/webp/photo/p1/301/2023/09/23/air-terjun-nglirip-1483267181.jpg" alt="Pemandangan alam"></div>
+          <div class="gallery-item"><img src="https://indonesiakaya.com/wp-content/uploads/2020/10/1__Secara_administratif_Air_Terjun_Nglirip_Tuban_terletak_di_Dusun_Jojogan_Desa_Mulyo_Agung_Kecamatan_Singgahan.jpg" alt="Lanskap alam"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand">Nglirip.</div>
+          <p>Temukan Sisi Alami Tuban melalui air, batu, hijau, dan cerita lokal.</p>
+        </div>
+        <div>
+          <h3>Lokasi</h3>
+          <p>Dusun Jojogan, Desa Mulyoagung,<br>Kecamatan Singgahan,<br>Kabupaten Tuban, Jawa Timur.</p>
+        </div>
+        <div>
+          <h3>Navigasi</h3>
+          <p><a href="#daya-tarik">Daya Tarik</a></p>
+          <p><a href="#aktivitas">Aktivitas</a></p>
+          <p><a href="#umkm">Kuliner / UMKM</a></p>
+          <p><a href="#informasi">Informasi Wisata</a></p>
+        </div>
+      </div>
+      <div class="copyright">© 2026 Air Terjun Nglirip • Jejak Ulama, Warisan untuk Generasi</div>
+    </div>
+  </footer>
+
+  <script>
+    const navbar = document.getElementById("navbar");
+
+    window.addEventListener("scroll", () => {
+      navbar.classList.toggle("scrolled", window.scrollY > 60);
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          entry.target.classList.add("show");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {threshold:.12});
+
+    document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
